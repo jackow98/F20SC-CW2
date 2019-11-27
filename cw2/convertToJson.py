@@ -17,7 +17,11 @@ def convertToValidJson(files):
         with open(file + "_new.json", "w+") as raw_file_new:
             raw_file_new.write(raw_file_contents_new)
 
+def getVisitors(docUUID):
+
+
 def main():
     # Files to convert
     files = ["issuu_cw2", "issuu_sample"]
     convertToValidJson(files)
+
