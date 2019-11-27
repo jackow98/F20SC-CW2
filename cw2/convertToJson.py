@@ -1,14 +1,5 @@
 import re
 
-
-def dummy():
-    """
-    This does this
-    :return:
-    """
-    print("Hi")
-
-
 # Files to convert
 files = ["issuu_cw2", "issuu_sample"]
 
