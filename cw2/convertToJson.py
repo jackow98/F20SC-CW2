@@ -1,15 +1,11 @@
 import re
 
-
-def main():
+def convertToValidJson(files):
     """
     Converts the .json files provided in coursework doc to correctly formatted JSON
 
     :return:
     """
-    # Files to convert
-    files = ["issuu_cw2", "issuu_sample"]
-
     for file in files:
         with open(file + ".json") as raw_file:
             raw_file_contents = raw_file.read()
@@ -20,3 +16,8 @@ def main():
 
         with open(file + "_new.json", "w+") as raw_file_new:
             raw_file_new.write(raw_file_contents_new)
+
+def main():
+    # Files to convert
+    files = ["issuu_cw2", "issuu_sample"]
+    convertToValidJson(files)
