@@ -21,6 +21,7 @@ def get_input(u: str, d: str, t: str, f: str):
 
     list_of_visits = FileManagement(f)
 
+
 def invoke_task(t: str):
     """
     Case statement that invokes task functionality matched to task parameter
