@@ -28,7 +28,7 @@ class FileManagement:
             # If exception, convert to JSON and load with new file name
             except json.decoder.JSONDecodeError:
                 self.convert_to_valid_json()
-                self.file = self.load_file()
+                return self.load_file()
     # TODO: Handle all exceptions
 
     def get_visitors(self, doc_uuid: str) -> list:

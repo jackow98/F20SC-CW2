@@ -42,6 +42,7 @@ def invoke_task(u: str, d: str, t: str, f: str):
         "4d": tasks.run_task_4d(),
         "5": tasks.run_task_5(),
         "6": tasks.run_task_6(),
+
     }
 
     return switcher.get(t, "Invalid Task")

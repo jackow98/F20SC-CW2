@@ -1,3 +1,5 @@
+from Logic.DataVisualisation import DataVisualisation
+
 class Views:
     @staticmethod
     def get_visitors_per_browser(visits: list) -> dict:
@@ -34,3 +36,4 @@ class Views:
         :param doc_uuid:
         :return:
         """
+        DataVisualisation.create_histogram(list_of_visits)
