@@ -46,12 +46,12 @@ class FileManagement:
         :return:
         """
 
-    def get_matched_parameter_count(self, param_to_count, param_to_match, param_to_match_val):
+    def get_matched_parameter_count(self, param_to_count, param_to_match=None, param_to_match_val=None):
         """
-        Generic method to generate a map that counts number of occurrences of given parameter 
-        :param param_to_count:
-        :param param_to_match:
-        :param param_to_match_val:
+        Generic method to generate a dictionary that counts number of occurrences of given parameter
+        :param param_to_count: The parameter that is being counted in the resulting dictionary
+        :param param_to_match: The parameter to filter visit objects, if omitted then matches all
+        :param param_to_match_val: The value to match against param_to_match
         :return:
         """
         res = {}
