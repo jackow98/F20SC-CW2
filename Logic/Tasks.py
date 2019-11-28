@@ -44,7 +44,7 @@ class Tasks:
         :return:
         """
         visitors_per_browser = Views.get_visitors_per_browser(self.visits)
-
+        DataVisualisation.create_histogram(visitors_per_browser, "Visitors per Browser")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_3b(self):

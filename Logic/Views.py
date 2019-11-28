@@ -39,7 +39,6 @@ class Views:
                         mydic[i[1]] +=1
                     else:
                         mydic[i[1]] = 1
-        print(mydic)
 
     # TODO: use https://pypi.org/project/pycountry/ and https://pypi.org/project/pycountry-convert/
     @staticmethod
@@ -55,7 +54,7 @@ class Views:
             country_code = pc.country_name_to_country_alpha2(key, cn_name_format="default")
             continent_code = pc.country_alpha2_to_continent_code(country_code)
             continent_name = pc.convert_continent_code_to_continent_name(continent_code)
-            print(continent_name)
+
             if continent_name in res:
                 res[continent_name] = res[continent_name] + 1
             else:

@@ -24,23 +24,20 @@ class GraphicalInterface:
             label.grid()
             text_box.grid()
 
-        # Buttons
-        tasks = ["2a", "2b", "3a", "3b", "4d", "5", "6"]
-        self.buttons = []
-        for task in tasks:
+        # Render button to execute task
+        self.button = tk.Button(
+            app,
+            text='Run task',
+            width=25,
+            command=lambda: self.run_task()
+        )
 
-            self.buttons.append(tk.Button(
-                app,
-                text='Run task ' + task,
-                width=25,
-                command=lambda: self.run_task(task)
-            ))
+        self.button.grid()
 
-            self.buttons[tasks.index(task)].grid()
-
+        # Display GUI
         app.mainloop()
 
-    def run_task(self, task_id: str):
+    def run_task(self):
         user_uuid = self.text_boxes[0].get()
         doc_uuid = self.text_boxes[1].get()
         task_name = self.text_boxes[2].get()
