@@ -1,10 +1,12 @@
 class Views:
     @staticmethod
-    def get_visitors_per_browser() -> dict:
+    def get_visitors_per_browser(visits: list) -> dict:
         """
         Return a dictionary with number of visitors for each browser
         :return:
         """
+
+
 
     # TODO: review visitor_useragent documentation to understand what regex to use
     # TODO: possibly overload above function?

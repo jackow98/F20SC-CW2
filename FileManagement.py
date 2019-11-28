@@ -61,6 +61,8 @@ class FileManagement:
 
         # Create new file _new appended to file name and updates instances file_name param
         new_file_name = self.file_name + "_new"
+
         with open(os.path.join("Data", new_file_name + ".json"), "w+") as raw_file_new:
             raw_file_new.write(raw_file_contents_new)
             self.file_name = new_file_name
+
