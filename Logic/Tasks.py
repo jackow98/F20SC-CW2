@@ -1,3 +1,6 @@
+from Logic.DataVisualisation import DataVisualisation
+
+
 class Tasks:
     def __init__(self, list_of_visits: list, user_uuid="", doc_uuid="", task_id="", file_name=""):
         """
