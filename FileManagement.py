@@ -46,12 +46,19 @@ class FileManagement:
         :return:
         """
 
-    def get_matched_parameter_count(self, param_to_count, param_to_match, param_to_m_val):
+    def get_matched_parameter_count(self, param_to_count, param_to_match, param_to_match_val):
+        """
+        Generic method to generate a map that counts number of occurrences of given parameter 
+        :param param_to_count:
+        :param param_to_match:
+        :param param_to_match_val:
+        :return:
+        """
         res = {}
         for document in self.file:
             try:
                 # Match the document to the specified parameter e.g. subject_doc_id
-                if document[param_to_match] == param_to_m_val:
+                if document[param_to_match] == param_to_match_val:
                     # TODO: Make a delegate validation function that checks country codes etc.
                     # If the dictionary already has key then increment otherwise insert
                     if document[param_to_count] in res:
