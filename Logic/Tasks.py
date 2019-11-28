@@ -1,5 +1,5 @@
 from Logic.DataVisualisation import DataVisualisation
-
+from Logic.Views import Views
 
 class Tasks:
     def __init__(self, list_of_visits: list, user_uuid="", doc_uuid="", task_id="", file_name=""):
@@ -18,6 +18,7 @@ class Tasks:
 
         :return:
         """
+        Views.get_visitors_per_country(self.doc_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_2b(self):
