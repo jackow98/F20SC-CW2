@@ -58,7 +58,7 @@ class FileManagement:
         for document in self.file:
             try:
                 # Match the document to the specified parameter e.g. subject_doc_id
-                if document[param_to_match] == param_to_match_val:
+                if param_to_match is None or document[param_to_match] == param_to_match_val:
                     # TODO: Make a delegate validation function that checks country codes etc.
                     # If the dictionary already has key then increment otherwise insert
                     if document[param_to_count] in res:

@@ -1,3 +1,5 @@
+import re
+
 from Logic.DataVisualisation import DataVisualisation
 import pycountry_convert as pc
 
@@ -9,17 +11,35 @@ class Views:
         Return a dictionary with number of visitors for each browser
         :return:
         """
+        return visits.get_matched_parameter_count("visitor_useragent")
 
 
 
     # TODO: review visitor_useragent documentation to understand what regex to use
     # TODO: possibly overload above function?
     @staticmethod
-    def get_visitors_per_browser_simple() -> dict:
+    def get_visitors_per_browser_simple(visits: list) -> dict:
         """
         Return a dictionary with number of visitors for each browser removing extra information about version etc.
         :return:
         """
+
+        mydic = {}
+        for visit in visits.file:
+            browsers_split = visit.get("visitor_useragent", "").split()
+
+
+            # if the string is after the start of the superstring or after a whitespace character and before a slash (not working)
+            # (?:((?:((? <= \s)[a - zA - z] * (?= /)) | ((? <= ^)[a - zA - z] * (?= /))))(?=.* ([A-Z][a-z]+)))
+
+            for item in browsers_split:
+                regex = re.compile('(?:()([A-Z][a-z]+))')
+                for i in regex.findall(item):
+                    if i[1] in mydic:
+                        mydic[i[1]] +=1
+                    else:
+                        mydic[i[1]] = 1
+        print(mydic)
 
     # TODO: use https://pypi.org/project/pycountry/ and https://pypi.org/project/pycountry-convert/
     @staticmethod
