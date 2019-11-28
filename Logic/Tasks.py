@@ -5,7 +5,11 @@ from FileManagement import FileManagement
 class Tasks:
     def __init__(self, user_uuid="", doc_uuid="", task_id="", file_name=""):
         """
-        :param list_of_visits:
+
+        :param user_uuid:
+        :param doc_uuid:
+        :param task_id:
+        :param file_name:
         """
         self.visits = FileManagement(file_name)
         self.user_uuid = user_uuid
@@ -19,8 +23,6 @@ class Tasks:
 
         :return:
         """
-
-
         print(self.doc_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
