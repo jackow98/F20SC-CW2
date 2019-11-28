@@ -11,7 +11,7 @@ from Logic.Tasks import Tasks
 @click.option('-f', default="", required=True, help='The file name e.g. "issuu_cw2"')
 def get_input(u: str, d: str, t: str, f: str):
     """
-    Command line interface for application that calls method associated with given task passing relevant parameters
+    Command line interface for app that calls method associated with given task passing relevant parameters
 
     :param u: The UUID of the the user e.g. "745409913574d4c6
     :param d: The UUID of the the document e.g. "140228202800-6ef39a241f35301a9a42cd0ed21e5fb0
