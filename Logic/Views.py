@@ -27,9 +27,10 @@ class Views:
         """
 
     @staticmethod
-    def get_visitors_per_country(doc_uuid: str) -> dict:
+    def get_visitors_per_country(list_of_visits: list, doc_uuid: str) -> dict:
         """
-         Given a document, return a dictionary with number of visitors for each country
+        Given a document, return a dictionary with number of visitors for each country
+        :param list_of_visits:
         :param doc_uuid:
         :return:
         """

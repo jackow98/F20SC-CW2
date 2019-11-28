@@ -19,32 +19,32 @@ def get_input(u: str, d: str, t: str, f: str):
     :param f: The file name e.g. "issuu_cw2
     :return:
     """
-    tasks = Tasks(u, d, t, f)
-    # print(str(tasks.visits.file))
     invoke_task(u, d, t, f)
 
 
 def invoke_task(u: str, d: str, t: str, f: str):
     """
     Case statement that invokes task functionality matched to task parameter
+    :param u:
+    :param d:
     :param t:
+    :param f:
     :return:
     """
     tasks = Tasks(u, d, t, f)
 
-
     # TODO: Invoke tasks
     switcher = {
         "2a": tasks.run_task_2a(),
-        "2b": "2b",
+        "2b": tasks.run_task_2b(),
         "3a": tasks.run_task_3a(),
-        "3b": "3b",
-        "4d": "4d",
-        "5": "5",
-        "6": "6"
+        "3b": tasks.run_task_3b(),
+        "4d": tasks.run_task_4d(),
+        "5": tasks.run_task_5(),
+        "6": tasks.run_task_6(),
     }
 
-    switcher.get(t, "Invalid Task")
+    return switcher.get(t, "Invalid Task")
 
 
 if __name__ == '__main__':
