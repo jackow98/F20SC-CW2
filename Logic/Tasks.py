@@ -43,8 +43,7 @@ class Tasks:
 
         :return:
         """
-        # print(type(self.visits.file))
-        # Views.get_visitors_per_browser(self.visits)
+        visitors_per_browser = Views.get_visitors_per_browser(self.visits)
 
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
@@ -53,6 +52,8 @@ class Tasks:
 
         :return:
         """
+        visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
+
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_4d(self):
