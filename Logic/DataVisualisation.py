@@ -3,7 +3,8 @@
 
 class DataVisualisation:
 
-    def create_histogram(self, visitors_by_country: dict):
+    @staticmethod
+    def create_histogram(visitors_by_country: dict):
         """
         Using matplot lib, generate and display a histogram
         :param visitors_by_country:
