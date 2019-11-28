@@ -10,6 +10,7 @@ class Tasks:
         """
         f = FileManagement(file_name)
         self.visits = FileManagement(f.file_name)
+        print(str(self.visits.file))
         self.user_uuid = user_uuid
         self.doc_uuid = doc_uuid
         self.task_id = task_id
