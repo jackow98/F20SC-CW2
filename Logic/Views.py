@@ -50,5 +50,6 @@ class Views:
                 print("Document has no ID")
                 # TODO: Handle error cases correctly
 
-        DataVisualisation.create_histogram(visitors_by_country)
+        print(visitors_by_country)
+        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country")
 
