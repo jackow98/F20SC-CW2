@@ -34,7 +34,7 @@ class Tasks:
         :return:
         """
         visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
-        visitors_by_continent = Views.get
+        visitors_by_continent = Views.get_visitors_per_continent(visitors_by_country)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_3a(self):

@@ -27,6 +27,8 @@ class Views:
         :param visitors_by_country:
         :return:
         """
+        for key, value in visitors_by_country:
+            print(key, value)
 
     @staticmethod
     def get_visitors_per_country(visits: list,  doc_uuid: str) -> dict:

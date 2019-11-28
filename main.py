@@ -35,18 +35,18 @@ def invoke_task(u: str, d: str, t: str, f: str):
 
     # TODO: Invoke tasks
     switcher = {
-        "2a": tasks.run_task_2a(),
-        "2b": tasks.run_task_2b(),
-        "3a": tasks.run_task_3a(),
-        "3b": tasks.run_task_3b(),
-        "4d": tasks.run_task_4d(),
-        "5": tasks.run_task_5(),
-        "6": tasks.run_task_6(),
+        "2a": tasks.run_task_2a,
+        "2b": tasks.run_task_2b,
+        "3a": tasks.run_task_3a,
+        "3b": tasks.run_task_3b,
+        "4d": tasks.run_task_4d,
+        "5": tasks.run_task_5,
+        "6": tasks.run_task_6,
 
     }
 
-    return switcher.get(t, "Invalid Task")
-
+    task_to_execute = switcher.get(t, "Invalid Task")
+    return task_to_execute()
 
 if __name__ == '__main__':
     get_input()
