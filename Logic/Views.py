@@ -36,4 +36,19 @@ class Views:
         :param doc_uuid:
         :return:
         """
-        DataVisualisation.create_histogram(list_of_visits)
+        # TODO: Make generic
+        visitors_by_country = {}
+        for document in list_of_visits:
+            try:
+                if document["subject_doc_id"] == doc_uuid:
+                    # TODO: Validate country code
+                    if document["visitor_country"] in visitors_by_country:
+                        visitors_by_country[document["visitor_country"]] = visitors_by_country[document["visitor_country"]] + 1
+                    else:
+                        visitors_by_country[document["visitor_country"]] = 1
+            except KeyError:
+                print("Document has no ID")
+                # TODO: Handle error cases correctly
+
+        DataVisualisation.create_histogram(visitors_by_country)
+

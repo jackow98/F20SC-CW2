@@ -24,7 +24,7 @@ class Tasks:
 
         :return:
         """
-        print(self.visits.file)
+        Views.get_visitors_per_country(self.visits.file, self.doc_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_2b(self):
