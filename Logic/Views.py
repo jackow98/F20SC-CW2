@@ -29,27 +29,13 @@ class Views:
         """
 
     @staticmethod
-    def get_visitors_per_country(list_of_visits: list, doc_uuid: str) -> dict:
+    def get_visitors_per_country(visits: list,  doc_uuid: str) -> dict:
         """
         Given a document, return a dictionary with number of visitors for each country
         :param list_of_visits:
         :param doc_uuid:
         :return:
         """
-        # TODO: Make generic
-        visitors_by_country = {}
-        for document in list_of_visits:
-            try:
-                if document["subject_doc_id"] == doc_uuid:
-                    # TODO: Validate country code
-                    if document["visitor_country"] in visitors_by_country:
-                        visitors_by_country[document["visitor_country"]] = visitors_by_country[document["visitor_country"]] + 1
-                    else:
-                        visitors_by_country[document["visitor_country"]] = 1
-            except KeyError:
-                print("Document has no ID")
-                # TODO: Handle error cases correctly
+        return visits.get_matched_parameter_count("visitor_country", "subject_doc_id", doc_uuid)
 
-        print(visitors_by_country)
-        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country")
 

@@ -46,6 +46,24 @@ class FileManagement:
         :return:
         """
 
+    def get_matched_parameter_count(self, param_to_count, param_to_match, param_to_m_val):
+        res = {}
+        for document in self.file:
+            try:
+                # Match the document to the specified parameter e.g. subject_doc_id
+                if document[param_to_match] == param_to_m_val:
+                    # TODO: Make a delegate validation function that checks country codes etc.
+                    # If the dictionary already has key then increment otherwise insert
+                    if document[param_to_count] in res:
+                        res[document[param_to_count]] = res[document[param_to_count]] + 1
+                    else:
+                        res[document[param_to_count]] = 1
+            except KeyError:
+                # print("Missing value in doc")
+                # TODO: Handle error cases correctly
+                pass
+        return res
+
     # TODO: Explicitly define param and return types
     def convert_to_valid_json(self):
         """

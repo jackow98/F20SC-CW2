@@ -24,7 +24,8 @@ class Tasks:
 
         :return:
         """
-        Views.get_visitors_per_country(self.visits.file, self.doc_uuid)
+        visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
+        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_2b(self):
