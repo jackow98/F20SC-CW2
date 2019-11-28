@@ -1,12 +1,13 @@
 from Logic.DataVisualisation import DataVisualisation
+from FileManagement import FileManagement
 
 
 class Tasks:
-    def __init__(self, list_of_visits: list, user_uuid="", doc_uuid="", task_id="", file_name=""):
+    def __init__(self, user_uuid="", doc_uuid="", task_id="", file_name=""):
         """
         :param list_of_visits:
         """
-        self.visits = list_of_visits
+        self.visits = FileManagement(file_name)
         self.user_uuid = user_uuid
         self.doc_uuid = doc_uuid
         self.task_id = task_id
@@ -18,6 +19,9 @@ class Tasks:
 
         :return:
         """
+
+
+        print(self.doc_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_2b(self):
