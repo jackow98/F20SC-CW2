@@ -14,9 +14,9 @@ class FileManagement:
         :param file_name:
         """
         self.file_name = file_name
-        self.load_file()
+        self.file = self.load_file()
 
-    def load_file(self) -> list:
+    def load_file(self) -> json:
         """
         Load in list of visits converting to JSON if there is a Json decoder exception
         :return:
@@ -28,9 +28,8 @@ class FileManagement:
             # If exception, convert to JSON and load with new file name
             except json.decoder.JSONDecodeError:
                 self.convert_to_valid_json()
-                self.load_file()
+                self.file = self.load_file()
     # TODO: Handle all exceptions
-
 
     def get_visitors(self, doc_uuid: str) -> list:
         """

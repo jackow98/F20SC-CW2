@@ -18,9 +18,8 @@ def get_input(u: str, d: str, t: str, f: str):
     :param f: The file name e.g. "issuu_cw2
     :return:
     """
-    # TODO: Handle file correctly
-    file = FileManagement(f)
 
+    list_of_visits = FileManagement(f)
 
 def invoke_task(t: str):
     """
