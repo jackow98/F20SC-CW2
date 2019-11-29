@@ -1,6 +1,6 @@
 # TODO: Make generic
-import matplotlib.pyplot as plt; plt.rcdefaults()
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 class DataVisualisation:

@@ -1,5 +1,4 @@
 import tkinter as tk
-from Logic.Tasks import Tasks
 import main
 
 
@@ -42,7 +41,11 @@ class GraphicalInterface:
         doc_uuid = self.text_boxes[1].get()
         task_name = self.text_boxes[2].get()
         file_name = self.text_boxes[3].get()
-        main.invoke_task(visitor_uuid, doc_uuid, task_name, file_name)
+
+        task_res = main.invoke_task(visitor_uuid, doc_uuid, task_name, file_name)
+        if task_res is not None:
+            tk.messagebox.showinfo(f"Result of task {task_name}", task_res)
+
 
 
 if __name__ == '__main__':

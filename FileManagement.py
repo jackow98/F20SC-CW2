@@ -2,6 +2,7 @@
 import re
 import json
 import os
+from Logic.ListFunctions import remove_duplicates
 
 
 class FileManagement:
@@ -31,13 +32,15 @@ class FileManagement:
                 return self.load_file()
     # TODO: Handle all exceptions
 
-    def get_visitors(self, doc_uuid: str) -> dict:
+    def get_visitors(self, doc_uuid: str) -> list:
         """
         Given a document, return a list of all visitor UUID's for said document
         :param doc_uuid:
         :return:
         """
         # TODO: Use an iterator?
+        # TODO: User username as well as user uuid
+        # TODO: Consider looking at event_type paramater to decide if page has been read?
         res = []
         for visit in self.file:
             try:
@@ -48,7 +51,7 @@ class FileManagement:
                 pass
 
         # Remove duplicates
-        return list(dict.fromkeys(res))
+        return remove_duplicates(res)
 
     def get_documents(self, visitor_uuid: str) -> dict:
         """
@@ -66,8 +69,7 @@ class FileManagement:
                 # TODO: Handle error cases correctly
                 pass
 
-        res = list(dict.fromkeys(res))
-        return {visitor_uuid: res}
+        return {visitor_uuid: remove_duplicates(res)}
 
     def get_matched_parameter_count(self, param_to_count, param_to_match=None, param_to_match_val=None):
         """

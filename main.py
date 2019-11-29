@@ -47,5 +47,6 @@ def invoke_task(u: str, d: str, t: str, f: str):
     task_to_execute = switcher.get(t, "Invalid Task")
     return task_to_execute()
 
+
 if __name__ == '__main__':
     get_input()

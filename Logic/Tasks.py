@@ -1,7 +1,7 @@
 from Logic.DataVisualisation import DataVisualisation
 from FileManagement import FileManagement
 from Logic.Views import Views
-
+from Logic.AlsoLikes import AlsoLikes
 
 class Tasks:
     def __init__(self, visitor_uuid="", doc_uuid="", task_id="", file_name=""):
@@ -52,6 +52,7 @@ class Tasks:
 
         :return:
         """
+        # TODO: Finish implementing
         visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
@@ -60,13 +61,9 @@ class Tasks:
 
         :return:
         """
-        readers_of_doc = self.visits.get_visitors(self.doc_uuid)
-
-        docs_read_by_readers = []
-        for reader in readers_of_doc:
-            docs_read_by_readers.append(self.visits.get_documents(reader))
-
-        print(docs_read_by_readers)
+        top_documents = AlsoLikes.get_also_likes(self.visits, self.doc_uuid, self.visitor_uuid)
+        print(f"Top {len(top_documents)} documents are: {top_documents}")
+        return f"Top {len(top_documents)} documents are: {str(top_documents)}"
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_5(self):

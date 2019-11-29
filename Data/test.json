@@ -1,0 +1,46 @@
+[
+  {
+  "visitor_uuid": "a",
+  "subject_doc_id": "1"
+  },
+  {
+  "visitor_uuid": "b",
+  "subject_doc_id": "1"
+  },
+  {
+  "visitor_uuid": "c",
+  "subject_doc_id": "1"
+  },
+  {
+  "visitor_uuid": "d",
+  "subject_doc_id": "1"
+  },
+  {
+  "visitor_uuid": "c",
+  "subject_doc_id": "2"
+  },
+  {
+  "visitor_uuid": "c",
+  "subject_doc_id": "3"
+  },
+  {
+  "visitor_uuid": "c",
+  "subject_doc_id": "4"
+  },
+  {
+  "visitor_uuid": "d",
+  "subject_doc_id": "5"
+  },
+  {
+  "visitor_uuid": "d",
+  "subject_doc_id": "6"
+  },
+  {
+  "visitor_uuid": "d",
+  "subject_doc_id": "7"
+  },
+  {
+  "visitor_uuid": "a",
+  "subject_doc_id": "4"
+  }
+]
