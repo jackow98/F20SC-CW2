@@ -6,7 +6,7 @@ import os
 
 class FileManagement:
 
-    # TODO: Make static variable that holds list of visits
+    # TODO: Remove duplicate code in get_visitors, get_documents and get_matched_parameter_count
 
     def __init__(self, file_name):
         """
@@ -37,7 +37,7 @@ class FileManagement:
         :param doc_uuid:
         :return:
         """
-
+        # TODO: Use an iterator?
         res = []
         for visit in self.file:
             try:
@@ -47,14 +47,25 @@ class FileManagement:
                 # TODO: Handle error cases correctly
                 pass
 
-        return {"doc_uuid": res}
+        return {doc_uuid: res}
 
-    def get_documents(self, user_uuid: str) -> list:
+    def get_documents(self, visitor_uuid: str) -> dict:
         """
         Given a user, return a list of all document UUID's for said user
-        :param user_uuid:
+        :param visitor_uuid:
         :return:
         """
+        # TODO: Use an iterator?
+        res = []
+        for visit in self.file:
+            try:
+                if visitor_uuid == visit["visitor_uuid"]:
+                    res.append(visit["subject_doc_id"])
+            except KeyError:
+                # TODO: Handle error cases correctly
+                pass
+
+        return {visitor_uuid: res}
 
     def get_matched_parameter_count(self, param_to_count, param_to_match=None, param_to_match_val=None):
         """

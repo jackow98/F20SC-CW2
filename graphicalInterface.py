@@ -11,7 +11,7 @@ class GraphicalInterface:
         app.title('Data Analysis of a Document Tracker')
 
         # Inputs
-        inputs = ["user_uuid", "doc_uuid", "task_name", "file_name"]
+        inputs = ["visitor_uuid", "doc_uuid", "task_name", "file_name"]
         self.labels = []
         self.text_boxes = []
         for input_box in inputs:
@@ -38,11 +38,11 @@ class GraphicalInterface:
         app.mainloop()
 
     def run_task(self):
-        user_uuid = self.text_boxes[0].get()
+        visitor_uuid = self.text_boxes[0].get()
         doc_uuid = self.text_boxes[1].get()
         task_name = self.text_boxes[2].get()
         file_name = self.text_boxes[3].get()
-        main.invoke_task(user_uuid, doc_uuid, task_name, file_name)
+        main.invoke_task(visitor_uuid, doc_uuid, task_name, file_name)
 
 
 if __name__ == '__main__':

@@ -4,16 +4,16 @@ from Logic.Views import Views
 
 
 class Tasks:
-    def __init__(self, user_uuid="", doc_uuid="", task_id="", file_name=""):
+    def __init__(self, visitor_uuid="", doc_uuid="", task_id="", file_name=""):
         """
 
-        :param user_uuid:
+        :param visitor_uuid:
         :param doc_uuid:
         :param task_id:
         :param file_name:
         """
         self.visits = FileManagement(file_name)
-        self.user_uuid = user_uuid
+        self.visitor_uuid = visitor_uuid
         self.doc_uuid = doc_uuid
         self.task_id = task_id
         self.file_name = file_name
@@ -62,6 +62,7 @@ class Tasks:
         :return:
         """
         print(self.visits.get_visitors(self.doc_uuid))
+        print(self.visits.get_documents(self.visitor_uuid))
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_5(self):
