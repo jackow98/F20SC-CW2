@@ -54,15 +54,19 @@ class Tasks:
         """
         visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
 
-
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_4d(self):
         """
 
         :return:
         """
-        print(self.visits.get_visitors(self.doc_uuid))
-        print(self.visits.get_documents(self.visitor_uuid))
+        readers_of_doc = self.visits.get_visitors(self.doc_uuid)
+
+        docs_read_by_readers = []
+        for reader in readers_of_doc:
+            docs_read_by_readers.append(self.visits.get_documents(reader))
+
+        print(docs_read_by_readers)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_5(self):

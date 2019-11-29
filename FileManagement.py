@@ -47,7 +47,8 @@ class FileManagement:
                 # TODO: Handle error cases correctly
                 pass
 
-        return {doc_uuid: res}
+        # Remove duplicates
+        return list(dict.fromkeys(res))
 
     def get_documents(self, visitor_uuid: str) -> dict:
         """
@@ -65,6 +66,7 @@ class FileManagement:
                 # TODO: Handle error cases correctly
                 pass
 
+        res = list(dict.fromkeys(res))
         return {visitor_uuid: res}
 
     def get_matched_parameter_count(self, param_to_count, param_to_match=None, param_to_match_val=None):
