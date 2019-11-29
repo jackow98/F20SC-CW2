@@ -61,6 +61,7 @@ class Tasks:
 
         :return:
         """
+        print(self.visits.get_visitors(self.doc_uuid))
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_5(self):

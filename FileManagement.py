@@ -31,13 +31,23 @@ class FileManagement:
                 return self.load_file()
     # TODO: Handle all exceptions
 
-    def get_visitors(self, doc_uuid: str) -> list:
+    def get_visitors(self, doc_uuid: str) -> dict:
         """
         Given a document, return a list of all visitor UUID's for said document
         :param doc_uuid:
         :return:
         """
-        # TODO: Implement iterator over visits
+
+        res = []
+        for visit in self.file:
+            try:
+                if doc_uuid == visit["subject_doc_id"]:
+                    res.append(visit["visitor_uuid"])
+            except KeyError:
+                # TODO: Handle error cases correctly
+                pass
+
+        return {"doc_uuid": res}
 
     def get_documents(self, user_uuid: str) -> list:
         """
@@ -55,16 +65,16 @@ class FileManagement:
         :return:
         """
         res = {}
-        for document in self.file:
+        for visit in self.file:
             try:
                 # Match the document to the specified parameter e.g. subject_doc_id
-                if param_to_match is None or document[param_to_match] == param_to_match_val:
+                if param_to_match is None or visit[param_to_match] == param_to_match_val:
                     # TODO: Make a delegate validation function that checks country codes etc.
                     # If the dictionary already has key then increment otherwise insert
-                    if document[param_to_count] in res:
-                        res[document[param_to_count]] = res[document[param_to_count]] + 1
+                    if visit[param_to_count] in res:
+                        res[visit[param_to_count]] = res[visit[param_to_count]] + 1
                     else:
-                        res[document[param_to_count]] = 1
+                        res[visit[param_to_count]] = 1
             except KeyError:
                 # print("Missing value in doc")
                 # TODO: Handle error cases correctly
