@@ -43,7 +43,6 @@ class AlsoLikes:
         docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(visits, doc_uuid, visitor_uuid)
 
         # Convert dictionary to list
-        # TODO: Consider removing step above if not useful to have a dictionary
         docs_read_by_visitors_list = []
         for doc in docs_read_by_visitors_dicts:
             for visitors in doc.values():

@@ -1,8 +1,7 @@
 # TODO: Make generic
 import matplotlib.pyplot as plt
-import numpy as np
 import pydot
-
+import matplotlib.image as mpimg
 from Logic.HelperFunctions import get_last_four_hex_digits
 
 
@@ -35,9 +34,15 @@ class DataVisualisation:
 
     @staticmethod
     def create_graph(docs_read_by_visitors_dicts: dict, doc_uuid, visitor_uuid):
+        """
+
+        :param docs_read_by_visitors_dicts:
+        :param doc_uuid:
+        :param visitor_uuid:
+        :return:
+        """
         graph = pydot.Dot(graph_type='digraph')
 
-        i = 0
         userNodes = []
         docNodes = []
 
@@ -59,4 +64,9 @@ class DataVisualisation:
                     graph.add_node(doc_node)
                     graph.add_edge(pydot.Edge(user_node, doc_node))
 
-        graph.write_png("myGraph.png")
+        # TODO: Display nicer
+        file_name = "alsoLikes" + doc_uuid + visitor_uuid + ".png"
+        graph.write_png(file_name)
+        img = mpimg.imread(file_name)
+        plt.imshow(img)
+        plt.show()
