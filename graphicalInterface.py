@@ -46,7 +46,7 @@ class GraphicalInterface:
         if task_res is not None:
             tk.messagebox.showinfo(f"Result of task {task_name}", task_res)
 
-
+#     TODO: Add padding
 
 if __name__ == '__main__':
     gui = GraphicalInterface()

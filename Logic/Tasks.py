@@ -2,6 +2,7 @@ from Logic.DataVisualisation import DataVisualisation
 from FileManagement import FileManagement
 from Logic.Views import Views
 from Logic.AlsoLikes import AlsoLikes
+import pprint
 
 class Tasks:
     def __init__(self, visitor_uuid="", doc_uuid="", task_id="", file_name=""):
@@ -71,6 +72,9 @@ class Tasks:
 
         :return:
         """
+        docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid, self.visitor_uuid)
+        pprint.pprint(docs_read_by_visitors_dicts)
+        DataVisualisation.create_graph(docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_6(self):

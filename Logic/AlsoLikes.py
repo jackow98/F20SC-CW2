@@ -8,10 +8,9 @@ from collections import OrderedDict, Counter
 class AlsoLikes:
 
     @staticmethod
-    def get_also_likes(visits: list, doc_uuid: str, visitor_uuid="") -> list:
-        # TODO: Review application structure, course specification doesn't want list of visits as parameter
+    def get_docs_read_by_visitors_dict(visits: list, doc_uuid: str, visitor_uuid=""):
         """
-        Return list of 10 doc ids that user has also viewed
+
         :param visits:
         :param doc_uuid:
         :param visitor_uuid:
@@ -26,9 +25,25 @@ class AlsoLikes:
             for visitor in visitors_of_doc:
                 docs_read_by_visitors_dicts.append(visits.get_documents(visitor))
 
+        # TODO: Correct behaviour
         # Get also likes for provided visitor ID if provided
         else:
             docs_read_by_visitors_dicts.append(visits.get_documents(visitor_uuid))
+
+        return docs_read_by_visitors_dicts
+
+    @staticmethod
+    def get_also_likes(visits: list, doc_uuid: str, visitor_uuid="") -> list:
+        # TODO: Review application structure, course specification doesn't want list of visits as parameter
+        """
+        Return list of 10 doc ids that user has also viewed
+        :param visits:
+        :param doc_uuid:
+        :param visitor_uuid:
+        :return:
+        """
+
+        docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(visits, doc_uuid, visitor_uuid)
 
         # Convert dictionary to list
         # TODO: Consider removing step above if not useful to have a dictionary
@@ -37,6 +52,7 @@ class AlsoLikes:
             for visitors in doc.values():
                 docs_read_by_visitors_list.extend(visitors)
 
+        print(docs_read_by_visitors_dicts)
         # Sort list and return first 10 values
         return AlsoLikes.sort_by_number_of_visitors(docs_read_by_visitors_list)[:10]
 
