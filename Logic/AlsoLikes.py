@@ -1,4 +1,4 @@
-from Logic.ListFunctions import remove_duplicates
+from Logic.HelperFunctions import remove_duplicates
 from collections import OrderedDict, Counter
 
 # Todo: user overloading or set params to include optional sort_function
@@ -19,16 +19,13 @@ class AlsoLikes:
         docs_read_by_visitors_dicts = []
 
         # Get also likes for provided document ID if no visitor ID is provided
-        if visitor_uuid == "":
-            visitors_of_doc = visits.get_visitors(doc_uuid)
+        visitors_of_doc = visits.get_visitors(doc_uuid)
 
-            for visitor in visitors_of_doc:
-                docs_read_by_visitors_dicts.append(visits.get_documents(visitor))
+        for visitor in visitors_of_doc:
+            docs_read_by_visitors_dicts.append(visits.get_documents(visitor))
 
         # TODO: Correct behaviour
         # Get also likes for provided visitor ID if provided
-        else:
-            docs_read_by_visitors_dicts.append(visits.get_documents(visitor_uuid))
 
         return docs_read_by_visitors_dicts
 
@@ -52,7 +49,6 @@ class AlsoLikes:
             for visitors in doc.values():
                 docs_read_by_visitors_list.extend(visitors)
 
-        print(docs_read_by_visitors_dicts)
         # Sort list and return first 10 values
         return AlsoLikes.sort_by_number_of_visitors(docs_read_by_visitors_list)[:10]
 

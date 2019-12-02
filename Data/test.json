@@ -42,5 +42,13 @@
   {
   "visitor_uuid": "a",
   "subject_doc_id": "4"
+  },
+  {
+  "visitor_uuid": "e",
+  "subject_doc_id": "5"
+  },
+  {
+  "visitor_uuid": "e",
+  "subject_doc_id": "8"
   }
 ]

@@ -2,7 +2,7 @@
 import re
 import json
 import os
-from Logic.ListFunctions import remove_duplicates
+from Logic.HelperFunctions import remove_duplicates
 
 
 class FileManagement:

@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pydot
 
+from Logic.HelperFunctions import get_last_four_hex_digits
+
 
 class DataVisualisation:
 
@@ -41,7 +43,7 @@ class DataVisualisation:
 
         for user in docs_read_by_visitors_dicts:
             for key, docs in user.items():
-                user_node = pydot.Node(key[-4:], shape="rectangle", style="filled")
+                user_node = pydot.Node(get_last_four_hex_digits(key), shape="rectangle", style="filled")
                 if key == visitor_uuid:
                     user_node.set_color("green")
 
@@ -49,9 +51,8 @@ class DataVisualisation:
                 graph.add_node(user_node)
 
                 for doc in docs:
-                    doc_node = pydot.Node(doc[-4:], shape="circle", style="filled")
+                    doc_node = pydot.Node(get_last_four_hex_digits(doc), shape="circle", style="filled")
                     if doc == doc_uuid:
-                        print("equal")
                         doc_node.set_color("green")
 
                     docNodes.append(doc_node)
