@@ -55,7 +55,7 @@ class Tasks:
         """
         # TODO: Finish implementing
         visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
-
+        DataVisualisation.create_histogram(visitors_per_browser_simple, "Visitors per Browser Simple")
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_4d(self):
         """

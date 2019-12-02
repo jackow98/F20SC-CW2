@@ -39,6 +39,9 @@ class Views:
                         mydic[i[1]] +=1
                     else:
                         mydic[i[1]] = 1
+        print(mydic)
+        return mydic
+
 
     # TODO: use https://pypi.org/project/pycountry/ and https://pypi.org/project/pycountry-convert/
     @staticmethod
