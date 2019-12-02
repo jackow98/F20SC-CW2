@@ -65,7 +65,7 @@ class DataVisualisation:
                     graph.add_edge(pydot.Edge(user_node, doc_node))
 
         # TODO: Display nicer
-        file_name = "alsoLikes" + doc_uuid + visitor_uuid + ".png"
+        file_name = "alsoLikes-" + get_last_four_hex_digits(doc_uuid) + "-" + get_last_four_hex_digits(visitor_uuid) + ".png"
         graph.write_png(file_name)
         img = mpimg.imread(file_name)
         plt.imshow(img)
