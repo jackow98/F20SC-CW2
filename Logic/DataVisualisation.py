@@ -56,6 +56,6 @@ class DataVisualisation:
 
                     docNodes.append(doc_node)
                     graph.add_node(doc_node)
-                    graph.add_edge(pydot.Edge(doc_node, user_node))
+                    graph.add_edge(pydot.Edge(user_node, doc_node))
 
         graph.write_png("myGraph.png")
