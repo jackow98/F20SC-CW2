@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import pydot
 import matplotlib.image as mpimg
 from Logic.HelperFunctions import get_last_four_hex_digits
-
+import os
 
 class DataVisualisation:
 
@@ -65,8 +65,11 @@ class DataVisualisation:
                     graph.add_edge(pydot.Edge(user_node, doc_node))
 
         # TODO: Display nicer
-        file_name = "alsoLikes-" + get_last_four_hex_digits(doc_uuid) + "-" + get_last_four_hex_digits(visitor_uuid) + ".png"
-        graph.write_png(file_name)
-        img = mpimg.imread(file_name)
-        plt.imshow(img)
-        plt.show()
+        file_name = "alsoLikes-" + get_last_four_hex_digits(doc_uuid) + "-" + get_last_four_hex_digits(visitor_uuid) + ".pdf"
+        directory = "AlsoLikesGraphs"
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        file_path = os.path.join("AlsoLikesGraphs", file_name)
+        graph.write_pdf(file_path)
+        os.startfile(file_path)
