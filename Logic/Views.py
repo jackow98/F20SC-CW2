@@ -2,6 +2,7 @@ import re
 
 from Logic.DataVisualisation import DataVisualisation
 import pycountry_convert as pc
+from user_agents import parse
 
 
 class Views:
@@ -14,7 +15,6 @@ class Views:
         return visits.get_matched_parameter_count("visitor_useragent")
 
 
-
     # TODO: review visitor_useragent documentation to understand what regex to use
     # TODO: possibly overload above function?
     @staticmethod
@@ -24,23 +24,26 @@ class Views:
         :return:
         """
 
-        mydic = {}
+        mydic = {'Other': 0}
+
         for visit in visits.file:
-            browsers_split = visit.get("visitor_useragent", "").split()
+            ua_string = visit.get("visitor_useragent", "")
+            user_agent = parse(ua_string)
+            if user_agent.browser.family in mydic:
+                mydic[user_agent.browser.family] += 1
+            else:
+                mydic[user_agent.browser.family] = 1
 
+        finaldic = {}
+        for browser in mydic:
+            if mydic[browser] <= 30:
+                mydic['Other'] += mydic[browser]
+            else:
+                finaldic[browser] = mydic[browser]
 
-            # if the string is after the start of the superstring or after a whitespace character and before a slash (not working)
-            # (?:((?:((? <= \s)[a - zA - z] * (?= /)) | ((? <= ^)[a - zA - z] * (?= /))))(?=.* ([A-Z][a-z]+)))
+        finaldic['Other'] = mydic['Other']
 
-            for item in browsers_split:
-                regex = re.compile('(?:()([A-Z][a-z]+))')
-                for i in regex.findall(item):
-                    if i[1] in mydic:
-                        mydic[i[1]] +=1
-                    else:
-                        mydic[i[1]] = 1
-        print(mydic)
-        return mydic
+        return finaldic
 
 
     # TODO: use https://pypi.org/project/pycountry/ and https://pypi.org/project/pycountry-convert/
