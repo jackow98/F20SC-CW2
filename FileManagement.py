@@ -17,13 +17,16 @@ class FileManagement:
         self.file_name = file_name
         self.file = self.load_file()
 
-    def load_file(self) -> json:
+    def load_file(self, file_name="") -> json:
         """
         Load in list of visits converting to JSON if there is a Json decoder exception
         :return:
         """
         # TODO: Exception handler, checks if valid Json, if not convert then try again else throw exception
-        with open(os.path.join("Data", self.file_name + ".json")) as raw_file:
+        if file_name == "":
+            file_name = self.file_name
+
+        with open(os.path.join("Data", file_name + ".json")) as raw_file:
             try:
                 return json.load(raw_file)
             # If exception, convert to JSON and load with new file name
