@@ -1,8 +1,9 @@
 import click
 
-from ErrorHandling.InputValidation import validate_uuid, validate_task, validate_file
+from ErrorHandling import CustomExceptions
+from ErrorHandling.InputValidation import validate_uuid, validate_task, validate_file, validate_input
 from Logic.Tasks import Tasks
-
+import re
 
 @click.command()
 @click.option('-u', default="", help='The UUID of the the user e.g. "745409913574d4c6"', type=str)
@@ -20,6 +21,7 @@ def get_input(u: str, d: str, t: str, f: str):
     :param f: The file name e.g. "issuu_cw2
     :return:
     """
+
     validate_uuid(u)
     validate_uuid(d)
     validate_task(t)
