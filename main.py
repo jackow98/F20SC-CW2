@@ -1,14 +1,15 @@
 import click
-from FileManagement import FileManagement
+
+from ErrorHandling.InputValidation import validate_uuid, validate_task, validate_file
 from Logic.Tasks import Tasks
 
 
 @click.command()
-@click.option('-u', default="", help='The UUID of the the user e.g. "745409913574d4c6"')
+@click.option('-u', default="", help='The UUID of the the user e.g. "745409913574d4c6"', type=str)
 @click.option('-d', default="",
-              help='The UUID of the the document e.g. "140228202800-6ef39a241f35301a9a42cd0ed21e5fb0"')
-@click.option('-t', default="", required=True, help='The task id e.g. "2a"')
-@click.option('-f', default="", required=True, help='The file name e.g. "issuu_cw2"')
+              help='The UUID of the the document e.g. "140228202800-6ef39a241f35301a9a42cd0ed21e5fb0"', type=str)
+@click.option('-t', default="", required=True, help='The task id e.g. "2a"', type=str)
+@click.option('-f', default="", required=True, help='The file name e.g. "issuu_cw2"', type=str)
 def get_input(u: str, d: str, t: str, f: str):
     """
     Command line interface for app that calls method associated with given task passing relevant parameters
@@ -19,6 +20,10 @@ def get_input(u: str, d: str, t: str, f: str):
     :param f: The file name e.g. "issuu_cw2
     :return:
     """
+    validate_uuid(u)
+    validate_uuid(d)
+    validate_task(t)
+    validate_file(f)
 
     invoke_task(u, d, t, f)
 

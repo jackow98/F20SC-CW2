@@ -56,8 +56,9 @@ class Tasks:
         # TODO: Finish implementing
         visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
         DataVisualisation.create_histogram(visitors_per_browser_simple, "Visitors per Browser Simple")
+
     # TODO: Pass correct parameters, implement functionality and handle excpetions
-    def run_task_4d(self):
+    def run_task_4d(self) -> str:
         """
 
         :return:
@@ -73,7 +74,7 @@ class Tasks:
         :return:
         """
         docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid, self.visitor_uuid)
-        DataVisualisation.create_graph(docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid)
+        DataVisualisation.create_also_likes_graph(docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_6(self):

@@ -48,5 +48,6 @@ class GraphicalInterface:
 
 #     TODO: Add padding
 
+
 if __name__ == '__main__':
     gui = GraphicalInterface()
