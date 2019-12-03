@@ -7,6 +7,7 @@ from collections import OrderedDict, Counter
 
 class AlsoLikes:
 
+    # TODO: Change to list of objects so more intuitive 
     @staticmethod
     def get_docs_read_by_visitors_dict(visits: list, doc_uuid: str, visitor_uuid=""):
         """
