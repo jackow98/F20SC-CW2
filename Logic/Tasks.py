@@ -26,7 +26,7 @@ class Tasks:
         :return:
         """
         visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
-        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country")
+        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country", "Countries", "Visitors")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_2b(self):
@@ -36,7 +36,7 @@ class Tasks:
         """
         visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
         visitors_by_continent = Views.get_visitors_per_continent(visitors_by_country)
-        DataVisualisation.create_histogram(visitors_by_continent, "Visitors per Continent")
+        DataVisualisation.create_histogram(visitors_by_continent, "Visitors per Continent", "Continents", "Visitors")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_3a(self):
@@ -45,7 +45,7 @@ class Tasks:
         :return:
         """
         visitors_per_browser = Views.get_visitors_per_browser(self.visits)
-        DataVisualisation.create_histogram(visitors_per_browser, "Visitors per Browser")
+        DataVisualisation.create_histogram(visitors_per_browser, "Visitors per Browser", "Browsers", "Visitors")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_3b(self):
@@ -55,7 +55,8 @@ class Tasks:
         """
         # TODO: Finish implementing
         visitors_per_browser_simple = Views.get_visitors_per_browser_simple(self.visits)
-        DataVisualisation.create_histogram(visitors_per_browser_simple, "Visitors per Browser Simple")
+        DataVisualisation.create_histogram(
+            visitors_per_browser_simple, "Visitors per Browser Simple", "Browsers", "Visitors")
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions
     def run_task_4d(self) -> str:
