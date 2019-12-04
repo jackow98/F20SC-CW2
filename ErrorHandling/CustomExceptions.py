@@ -9,17 +9,25 @@ class VisualisationError(Error):
 
 class UUIDError(Error):
     def __init__(self, uuid: str):
-        self.message = f"The UUID '{uuid}' is incorrectly formatted"
+        if uuid == "":
+            self.message = f"Please include a UUID"
+        else:
+            self.message = f"The UUID '{uuid}' is incorrectly formatted"
 
 
 class IncorrectTaskError(Error):
-    def __init__(self, uuid: str):
-        if uuid == "":
+    def __init__(self, task_id: str):
+        if task_id == "":
             self.message = f"Please include a task ID"
         else:
-            self.message = f"The task '{uuid}' is not a valid task"
+            self.message = f"The task '{task_id}' is not a valid task"
 
 
 class MissingFileError(Error):
     def __init__(self):
         self.message = f"Please include a file name"
+
+
+class MissingDocument(Error):
+    def __init__(self):
+        self.message = f"No record of provided document"

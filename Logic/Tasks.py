@@ -1,3 +1,5 @@
+from ErrorHandling import CustomExceptions
+from ErrorHandling.InputValidation import validate_input, check_uuid
 from FileManagement import FileManagement
 from Logic.AlsoLikes import AlsoLikes
 from Logic.DataVisualisation import DataVisualisation
@@ -19,22 +21,46 @@ class Tasks:
         self.doc_uuid = doc_uuid
         self.task_id = task_id
         self.file_name = file_name
+        self.visitors_by_country ={}
 
     # TODO: Handle exceptions
 
-    def run_task_2a(self):
+    def get_visitors_by_country_and_check(self):
+        input_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
+
+        if input_valid != "":
+            return input_valid
+        else:
+            self.visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
+
+            if self.visitors_by_country == {}:
+                return f"No documents with doc uuid of '{self.doc_uuid}' were found"
+
+        return ""
+
+    def run_task_2a(self) -> str:
         """
         Take a doc_uuid and display a histogram of countries of the viewers
         """
-        visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
-        DataVisualisation.create_histogram(visitors_by_country, "Visitors per Country", "Countries", "Visitors")
+        check = self.get_visitors_by_country_and_check()
+        if check != "":
+            return check
+
+        DataVisualisation.create_histogram(self.visitors_by_country, "Visitors per Country", "Countries", "Visitors")
 
     def run_task_2b(self):
         """
         Take a doc_uuid and display a histogram of the continents of the viewers
         """
-        visitors_by_country = Views.get_visitors_per_country(self.visits, self.doc_uuid)
-        visitors_by_continent = Views.get_visitors_per_continent(visitors_by_country)
+        check = self.get_visitors_by_country_and_check()
+        if check != "":
+            return check
+
+        visitors_by_continent = Views.get_visitors_per_continent(self.visitors_by_country)
+
+        if visitors_by_continent == {}:
+            return f"No documents with doc uuid of '{self.doc_uuid}' were found"
+
         DataVisualisation.create_histogram(visitors_by_continent, "Visitors per Continent", "Continents", "Visitors")
 
     def run_task_3a(self):

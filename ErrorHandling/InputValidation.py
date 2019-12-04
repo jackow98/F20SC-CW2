@@ -15,7 +15,7 @@ def check_file(f: str):
 
 
 def check_uuid(s: str):
-    if re.match(r'\b(uuid:){0,1}\s*([a-f0-9\\-]*){1}\s*', s) or s == "":
+    if re.match(r'\b(uuid:){0,1}\s*([a-f0-9\\-]*){1}\s*', s):
         return True
     else:
         raise CustomExceptions.UUIDError(s)
@@ -30,26 +30,26 @@ def check_task(t: str):
         raise CustomExceptions.IncorrectTaskError(t)
 
 
-def validate_input(input_string: str, check_func, exception: Exception):
+def validate_input(input_string: str, check_func, exception) -> str:
     try:
         check_func(input_string)
+        return ""
     except exception as err:
-        print(err.message)
-        sys.exit()
+        return err.message
 
 
-def validate_uuid(visitor_uuid: str):
+def validate_uuid(visitor_uuid: str) -> str:
     """
 
     :param visitor_uuid:
     :return:
     """
-    validate_input(visitor_uuid, lambda u: check_uuid(u), CustomExceptions.UUIDError)
+    return validate_input(visitor_uuid, lambda u: check_uuid(u), CustomExceptions.UUIDError)
 
 
-def validate_task(task: str):
-    validate_input(task, lambda t: check_task(t), CustomExceptions.IncorrectTaskError)
+def validate_task(task: str) -> str:
+    return validate_input(task, lambda t: check_task(t), CustomExceptions.IncorrectTaskError)
 
 
-def validate_file(file: str):
-    validate_input(file, lambda f: check_file(f), CustomExceptions.MissingFileError)
+def validate_file(file: str) -> str:
+    return validate_input(file, lambda f: check_file(f), CustomExceptions.MissingFileError)
