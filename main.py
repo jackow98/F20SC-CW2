@@ -52,7 +52,11 @@ def invoke_task(u: str, d: str, t: str, f: str) -> str:
     }
 
     task_to_execute = switcher.get(t, lambda: "Invalid Task")
-    return task_to_execute()
+    executed_task = task_to_execute()
+    if executed_task is not None:
+        print(executed_task)
+
+    return executed_task
 
 
 if __name__ == '__main__':

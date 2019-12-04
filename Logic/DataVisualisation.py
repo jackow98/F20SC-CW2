@@ -10,6 +10,7 @@ import numpy as np
 import mplcursors
 np.random.seed(42)
 
+
 class DataVisualisation:
 
     @staticmethod

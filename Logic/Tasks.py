@@ -90,25 +90,38 @@ class Tasks:
 
         :return: A string detailing the top 10 document ID's
         """
+        doc_uuid_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
+
+        if doc_uuid_valid != "":
+            return doc_uuid_valid
+
         top_documents = AlsoLikes.get_also_likes(self.visits, self.doc_uuid, self.visitor_uuid)
 
-        return_string = f"Top {len(top_documents)} documents are: {top_documents}"
-        print(return_string)
-        return return_string
+        if not top_documents:
+            return f"There are no also liked documents for the doc UUID '{self.doc_uuid}'"
+
+        return f"Top {len(top_documents)} documents are: {top_documents}"
 
     def run_task_5(self):
         """
         Saves an also likes graph between the input document and all documents also read by visitor
         :return:
         """
+        doc_uuid_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
+
+        if doc_uuid_valid != "":
+            return doc_uuid_valid
+
         docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid)
+
+        if not docs_read_by_visitors_dicts:
+            return f"There are no also liked documents for the doc UUID '{self.doc_uuid}'"
+
         file_name = DataVisualisation.create_also_likes_graph(
             docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid
         )
 
-        return_string = f"Graph created and saved as a PDF and saved at: {file_name}"
-        print(return_string)
-        return
+        return f"Graph created and saved as a PDF at: {file_name}"
 
     def run_task_6(self):
         """
@@ -116,6 +129,10 @@ class Tasks:
         :return:
         """
         docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid)
+
+        if not docs_read_by_visitors_dicts:
+            return f"There are no also liked documents for the doc UUID '{self.doc_uuid}'"
+
         file_name = DataVisualisation.create_also_likes_graph(
             docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid
         )
