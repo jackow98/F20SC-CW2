@@ -7,7 +7,7 @@ from user_agents import parse
 
 class Views:
     @staticmethod
-    def get_visitors_per_browser(visits: list) -> dict:
+    def get_visitors_per_browser(visits) -> dict:
         """
         Return a dictionary with number of visitors for each browser
         :return:
@@ -18,7 +18,7 @@ class Views:
     # TODO: review visitor_useragent documentation to understand what regex to use
     # TODO: possibly overload above function?
     @staticmethod
-    def get_visitors_per_browser_simple(visits: list) -> dict:
+    def get_visitors_per_browser_simple(visits) -> dict:
         """
         Return a dictionary with number of visitors for each browser removing extra information about version etc.
         :return:
@@ -69,7 +69,7 @@ class Views:
         return res
 
     @staticmethod
-    def get_visitors_per_country(visits: list,  doc_uuid: str) -> dict:
+    def get_visitors_per_country(visits,  doc_uuid: str) -> dict:
         """
         Given a document, return a dictionary with number of visitors for each country
         :param list_of_visits:

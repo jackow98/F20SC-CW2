@@ -4,7 +4,7 @@ from collections import OrderedDict, Counter
 class AlsoLikes:
 
     @staticmethod
-    def get_docs_read_by_visitors_dict(visits: list, doc_uuid: str) -> list:
+    def get_docs_read_by_visitors_dict(visits, doc_uuid: str) -> list:
         """
         Returns a list of objects that details documents read by other users who have also read provided document
 
@@ -23,7 +23,7 @@ class AlsoLikes:
         return docs_read_by_visitors_dicts
 
     @staticmethod
-    def get_also_likes(visits: list, doc_uuid: str, visitor_uuid="") -> list:
+    def get_also_likes(visits, doc_uuid: str, visitor_uuid="") -> list:
         """
         Return list of 10 doc ids that user has also viewed
 
