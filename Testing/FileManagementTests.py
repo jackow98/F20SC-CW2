@@ -1,4 +1,5 @@
 import unittest
+
 from FileManagement import FileManagement
 
 
@@ -13,7 +14,8 @@ class FileManagementTests(unittest.TestCase):
         self.created_simple_test_data = FileManagement("simple_test")
 
     def test_load_file(self):
-        self.assertEqual(self.full_provided_malformed__json.load_file(), self.full_provided_correctly_formed_json.load_file())
+        self.assertEqual(self.full_provided_malformed__json.load_file(),
+                         self.full_provided_correctly_formed_json.load_file())
 
     def test_get_visitors(self):
         self.assertEqual(self.created_simple_test_data.get_visitors("1"), ["a", "b", "c", "d", ])

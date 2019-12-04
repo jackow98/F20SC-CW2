@@ -73,7 +73,7 @@ class Tasks:
 
         :return:
         """
-        docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid, self.visitor_uuid)
+        docs_read_by_visitors_dicts = AlsoLikes.get_docs_read_by_visitors_dict(self.visits, self.doc_uuid)
         DataVisualisation.create_also_likes_graph(docs_read_by_visitors_dicts, self.doc_uuid, self.visitor_uuid)
 
     # TODO: Pass correct parameters, implement functionality and handle excpetions

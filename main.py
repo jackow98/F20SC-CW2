@@ -1,9 +1,8 @@
 import click
 
-from ErrorHandling import CustomExceptions
-from ErrorHandling.InputValidation import validate_uuid, validate_task, validate_file, validate_input
+from ErrorHandling.InputValidation import validate_uuid, validate_task, validate_file
 from Logic.Tasks import Tasks
-import re
+
 
 @click.command()
 @click.option('-u', default="", help='The UUID of the the user e.g. "745409913574d4c6"', type=str)
@@ -30,18 +29,18 @@ def get_input(u: str, d: str, t: str, f: str):
     invoke_task(u, d, t, f)
 
 
-def invoke_task(u: str, d: str, t: str, f: str):
+def invoke_task(u: str, d: str, t: str, f: str) -> str:
     """
     Case statement that invokes task functionality matched to task parameter
-    :param u:
-    :param d:
-    :param t:
-    :param f:
+
+    :param u: The UUID of the the user e.g. "745409913574d4c6
+    :param d: The UUID of the the document e.g. "140228202800-6ef39a241f35301a9a42cd0ed21e5fb0
+    :param t: The task id e.g. "2a
+    :param f: The file name e.g. "issuu_cw2
     :return:
     """
     tasks = Tasks(u, d, t, f)
 
-    # TODO: Invoke tasks
     switcher = {
         "2a": tasks.run_task_2a,
         "2b": tasks.run_task_2b,
@@ -52,7 +51,7 @@ def invoke_task(u: str, d: str, t: str, f: str):
         "6": tasks.run_task_6,
     }
 
-    task_to_execute = switcher.get(t, "Invalid Task")
+    task_to_execute = switcher.get(t, lambda: "Invalid Task")
     return task_to_execute()
 
 
