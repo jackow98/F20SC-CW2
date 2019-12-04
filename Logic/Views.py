@@ -1,6 +1,3 @@
-import re
-
-from Logic.DataVisualisation import DataVisualisation
 import pycountry_convert as pc
 from user_agents import parse
 
@@ -10,52 +7,52 @@ class Views:
     def get_visitors_per_browser(visits) -> dict:
         """
         Return a dictionary with number of visitors for each browser
-        :return:
+
+        :visits: The list of visit objects to iterate over
+        :return: Dictionary with number of visitors for each browser
         """
         return visits.get_matched_parameter_count("visitor_useragent")
 
-
-    # TODO: review visitor_useragent documentation to understand what regex to use
-    # TODO: possibly overload above function?
     @staticmethod
     def get_visitors_per_browser_simple(visits) -> dict:
         """
         Return a dictionary with number of visitors for each browser removing extra information about version etc.
-        :return:
-        """
 
-        mydic = {'Other': 0}
+        :visits: The list of visit objects to iterate over
+        :return: Dictionary with number of visitors for each browser removing extra information about version etc.
+        """
+        visits_by_browser_dictionary = {'Other': 0}
 
         for visit in visits.file:
             ua_string = visit.get("visitor_useragent", "")
             user_agent = parse(ua_string)
-            if user_agent.browser.family in mydic:
-                mydic[user_agent.browser.family] += 1
+            if user_agent.browser.family in visits_by_browser_dictionary:
+                visits_by_browser_dictionary[user_agent.browser.family] += 1
             else:
-                mydic[user_agent.browser.family] = 1
+                visits_by_browser_dictionary[user_agent.browser.family] = 1
 
-        finaldic = {}
-        for browser in mydic:
-            if mydic[browser] <= 30:
-                mydic['Other'] += mydic[browser]
+        simplified_visits_by_browser_dictionary = {}
+        for browser in visits_by_browser_dictionary:
+            if visits_by_browser_dictionary[browser] <= 30:
+                visits_by_browser_dictionary['Other'] += visits_by_browser_dictionary[browser]
             else:
-                finaldic[browser] = mydic[browser]
+                simplified_visits_by_browser_dictionary[browser] = visits_by_browser_dictionary[browser]
 
-        finaldic['Other'] = mydic['Other']
+        simplified_visits_by_browser_dictionary['Other'] = visits_by_browser_dictionary['Other']
 
-        return finaldic
+        return simplified_visits_by_browser_dictionary
 
-
-    # TODO: use https://pypi.org/project/pycountry/ and https://pypi.org/project/pycountry-convert/
     @staticmethod
     def get_visitors_per_continent(visitors_by_country: dict) -> dict:
         """
         Generate a new dictionary that groups visitors by continent
-        :param visitors_by_country:
+
+        :param visitors_by_country: A dictionary with country as keys and list of count as value
         :return:
         """
-        # TODO: Make generic
+
         res = {}
+        # For each country, get country ID from name then convert to continent ID and find corresponding name
         for key in visitors_by_country.keys():
             country_code = pc.country_name_to_country_alpha2(key, cn_name_format="default")
             continent_code = pc.country_alpha2_to_continent_code(country_code)
@@ -69,11 +66,11 @@ class Views:
         return res
 
     @staticmethod
-    def get_visitors_per_country(visits,  doc_uuid: str) -> dict:
+    def get_visitors_per_country(visits, doc_uuid: str) -> dict:
         """
         Given a document, return a dictionary with number of visitors for each country
-        :param list_of_visits:
-        :param doc_uuid:
+        :param visits: The list of visit objects to iterate over
+        :param doc_uuid: The doc UUID to gather country information about
         :return:
         """
         visits_per_country_codes = visits.get_matched_parameter_count("visitor_country", "subject_doc_id", doc_uuid)

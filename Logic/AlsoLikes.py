@@ -27,7 +27,7 @@ class AlsoLikes:
         """
         Return list of 10 doc ids that user has also viewed
 
-         :param visits: The list of visit objects to iterate over
+        :param visits: The list of visit objects to iterate over
         :param doc_uuid: The doc uuid to that the user has viewed
         :param visitor_uuid: The visitor uuid of the user that has initially viewed the document
 
