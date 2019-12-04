@@ -1,5 +1,6 @@
 import re
 import sys
+
 from ErrorHandling import CustomExceptions
 
 
@@ -43,7 +44,7 @@ def validate_uuid(visitor_uuid: str):
     :param visitor_uuid:
     :return:
     """
-    validate_input(visitor_uuid, lambda u : check_uuid(u), CustomExceptions.UUIDError)
+    validate_input(visitor_uuid, lambda u: check_uuid(u), CustomExceptions.UUIDError)
 
 
 def validate_task(task: str):
