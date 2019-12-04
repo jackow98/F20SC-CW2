@@ -5,7 +5,10 @@ import matplotlib.pyplot as plt
 import pydot
 
 from Logic.HelperFunctions import get_last_four_hex_digits
-
+import matplotlib.pyplot as plt
+import numpy as np
+import mplcursors
+np.random.seed(42)
 
 class DataVisualisation:
 
@@ -55,7 +58,21 @@ class DataVisualisation:
             list(item_to_count_dict.keys()),
             rotation=45
         )
-        plt.xlabel(x_label, fontsize=11)
+
+        locs, labels = plt.xticks()
+
+        cursor = mplcursors.cursor(hover=True)
+        cursor.connect(
+            "add", lambda sel: sel.annotation.set_text(labels[sel.target.index].get_text()))
+
+        # Hides X axis values if there is more than 15
+        frame1 = plt.gca()
+        if len(labels) < 15:
+            plt.xlabel(x_label, fontsize=11)
+
+        else:
+            frame1.axes.get_xaxis().set_ticks([])
+
         plt.ylabel(y_label, fontsize=11)
         plt.title(title)
 

@@ -26,6 +26,11 @@ class Tasks:
     # TODO: Handle exceptions
 
     def get_visitors_by_country_and_check(self):
+        """
+        A method to check for a valid user uuid input and non empty visitor dictionary
+
+        :return: String with error message if error or empty string upon success
+        """
         input_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
 
         if input_valid != "":
