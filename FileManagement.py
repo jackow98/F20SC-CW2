@@ -14,7 +14,7 @@ class FileManagement:
         :param file_name: The name of the JSON file containing a list of visits e.g. "issuu_cw2"
         """
         self.file_name = file_name
-        self.file = self.load_file()
+        self.file = None
 
     def load_file(self, file_name="") -> json:
         """
@@ -26,14 +26,19 @@ class FileManagement:
         if file_name == "":
             file_name = self.file_name
 
-        with open(os.path.join("Data", file_name + ".json")) as raw_file:
-            try:
-                return json.load(raw_file)
+        try:
+            with open(os.path.join("Data", file_name + ".json")) as raw_file:
+                try:
+                    self.file = json.load(raw_file)
+                    return ""
 
-            # If exception, convert to JSON and load with new file name
-            except json.decoder.JSONDecodeError:
-                self.convert_to_valid_json()
+                # If exception, convert to JSON and load with new file name
+                except json.decoder.JSONDecodeError:
+                    self.convert_to_valid_json()
                 return self.load_file()
+
+        except FileNotFoundError:
+            return f"The file {file_name} doesn't exist"
 
     def get_matched_visits_list(self, uuid_to_match: str, field_to_match: str, field_to_return: str) -> list:
         """

@@ -21,11 +21,6 @@ def get_input(u: str, d: str, t: str, f: str):
     :return:
     """
 
-    validate_uuid(u)
-    validate_uuid(d)
-    validate_task(t)
-    validate_file(f)
-
     invoke_task(u, d, t, f)
 
 
@@ -39,7 +34,19 @@ def invoke_task(u: str, d: str, t: str, f: str) -> str:
     :param f: The file name e.g. "issuu_cw2
     :return:
     """
+
+    valid_params = [validate_file(f), validate_task(t), validate_uuid(d), validate_uuid(u)]
+
+    for param in valid_params:
+        if param != "":
+            print(param)
+            return param
+
     tasks = Tasks(u, d, t, f)
+    loaded_file = tasks.visits.load_file()
+    if loaded_file != "":
+        print(loaded_file)
+        return loaded_file
 
     switcher = {
         "2a": tasks.run_task_2a,

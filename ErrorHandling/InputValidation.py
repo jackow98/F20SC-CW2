@@ -15,7 +15,7 @@ def check_file(f: str):
 
 
 def check_uuid(s: str):
-    if re.match(r'\b(uuid:){0,1}\s*([a-f0-9\\-]*){1}\s*', s):
+    if re.match(r'\b(uuid:){0,1}\s*([a-f0-9\\-]*){1}\s*', s) or s == "":
         return True
     else:
         raise CustomExceptions.UUIDError(s)

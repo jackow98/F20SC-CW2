@@ -31,6 +31,9 @@ class Tasks:
 
         :return: String with error message if error or empty string upon success
         """
+        if self.doc_uuid == "":
+            return "Please enter a valid UUID "
+
         input_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
 
         if input_valid != "":
@@ -90,6 +93,9 @@ class Tasks:
 
         :return: A string detailing the top 10 document ID's
         """
+        if self.doc_uuid == "":
+            return "Please enter a valid UUID "
+
         doc_uuid_valid = validate_input(self.doc_uuid, lambda d: check_uuid(d), CustomExceptions.UUIDError)
 
         if doc_uuid_valid != "":
