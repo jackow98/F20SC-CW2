@@ -9,6 +9,7 @@ setup(
     author='Jack Walker, Paul Cockburn',
     author_email='jw50@hw.ac.uk, psc4@hw.ac.uk',
     description='Data Analytics application',
+    scripts=['cw2'],
     install_requires=[
         'mplcursors',
         'matplotlib',
