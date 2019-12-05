@@ -2,13 +2,10 @@
 import os
 
 import matplotlib.pyplot as plt
+import mplcursors
 import pydot
 
 from Logic.HelperFunctions import get_last_four_hex_digits
-import matplotlib.pyplot as plt
-import numpy as np
-import mplcursors
-np.random.seed(42)
 
 
 class DataVisualisation:

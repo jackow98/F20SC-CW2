@@ -21,7 +21,7 @@ class Tasks:
         self.doc_uuid = doc_uuid
         self.task_id = task_id
         self.file_name = file_name
-        self.visitors_by_country ={}
+        self.visitors_by_country = {}
 
     # TODO: Handle exceptions
 
