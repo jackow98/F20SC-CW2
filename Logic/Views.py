@@ -21,8 +21,9 @@ class Views:
         :visits: The list of visit objects to iterate over
         :return: Dictionary with number of visitors for each browser removing extra information about version etc.
         """
-        visits_by_browser_dictionary = {'Other': 0}
 
+        # create dictionary with all the simple browser names and their occurrences
+        visits_by_browser_dictionary = {'Other': 0}
         for visit in visits.file:
             ua_string = visit.get("visitor_useragent", "")
             user_agent = parse(ua_string)
@@ -31,16 +32,18 @@ class Views:
             else:
                 visits_by_browser_dictionary[user_agent.browser.family] = 1
 
-        simplified_visits_by_browser_dictionary = {}
+        # using the dictionary created above, create and return a new dictionary that combines any browsers with less
+        # than 30 occurrences into a single 'Other' item. THis helps the histogram to be more readable
+        reduced_visits_by_browser_dictionary = {}
         for browser in visits_by_browser_dictionary:
             if visits_by_browser_dictionary[browser] <= 30:
                 visits_by_browser_dictionary['Other'] += visits_by_browser_dictionary[browser]
             else:
-                simplified_visits_by_browser_dictionary[browser] = visits_by_browser_dictionary[browser]
+                reduced_visits_by_browser_dictionary[browser] = visits_by_browser_dictionary[browser]
 
-        simplified_visits_by_browser_dictionary['Other'] = visits_by_browser_dictionary['Other']
+        reduced_visits_by_browser_dictionary['Other'] = visits_by_browser_dictionary['Other']
 
-        return simplified_visits_by_browser_dictionary
+        return reduced_visits_by_browser_dictionary
 
     @staticmethod
     def get_visitors_per_continent(visitors_by_country: dict) -> dict:
