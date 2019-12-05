@@ -1,5 +1,6 @@
 # TODO: Make generic
 import os
+import subprocess, sys
 
 import matplotlib.pyplot as plt
 import mplcursors
@@ -120,4 +121,5 @@ class DataVisualisation:
         """"
         Display file
         """
-        os.startfile(file_path)
+        opener = "open" if sys.platform  == "darwin" else "xdg-open"
+        subprocess.call([opener, file_path])

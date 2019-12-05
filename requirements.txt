@@ -4,3 +4,4 @@ pycountry-convert==0.7.2
 pydot==1.4.1
 user-agents==2.0
 Click==7.0
+mplcursors==0.3
