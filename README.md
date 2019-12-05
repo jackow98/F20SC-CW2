@@ -21,10 +21,10 @@ pip install . --user
 
 3. To run the graphical interface 
 ```
-cw2
+python3 cw2
 ```
 
 4. To use the CLI 
 ```
-cw2 -f filename -t taskid -u userUuid -d documentUuid
+python3 cw2 -f filename -t taskid -u userUuid -d documentUuid
 ```
