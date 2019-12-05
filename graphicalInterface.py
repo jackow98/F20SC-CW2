@@ -62,6 +62,3 @@ class GraphicalInterface:
             tk.messagebox.showinfo(f"Result of task {task_name}", task_res)
     # except:
     #     tk.messagebox.showwarning(f"Application Error", "There has been an error in the application")
-
-
-gui = GraphicalInterface()
