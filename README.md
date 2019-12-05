@@ -1,6 +1,6 @@
 # F20SC-CW2
 
-#Set up
+## Set up
 To run the application, do the following:
 
 1. Download and extract the following folder:
@@ -15,6 +15,7 @@ pip install .
 
 You may need to run the below command on a Heriot Watt Linux machine
 
+```
 pip install . --user
 
 ```
