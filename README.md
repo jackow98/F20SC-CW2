@@ -3,7 +3,7 @@
 ## Set up
 To run the application, do the following:
 
-1. Download and extract (this folder)(https://drive.google.com/open?id=1pWz9bUDwOwO5uTbpM25-qYwRa6YRU4Zx)
+1. Download and extract [this folder](https://drive.google.com/open?id=1pWz9bUDwOwO5uTbpM25-qYwRa6YRU4Zx)
 
 
 2. Navigate to the root directory and run
