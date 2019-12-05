@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+from main import get_input
+from graphicalInterface import GraphicalInterface
+
+import sys
+
+
+if len(sys.argv) == 1:
+    GraphicalInterface()
+else:
+    get_input()

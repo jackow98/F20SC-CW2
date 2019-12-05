@@ -1,0 +1,27 @@
+[project]
+name = "cw2"
+version = "1"
+description = "Data Analytics application"
+authors = [
+    "Jack Walker <jw50@hw.ac.uk>",
+    "Paul Cockburn <psc4@hw.ac.uk>"
+]
+readme = "README.md"
+python = "^3.6"
+repository = "https://github.com/F20SC-CW2"
+
+[dependencies]
+mplcursors="0.3"
+matplotlib="3.1.1"
+pycountry="19.8.18"
+pycountry-convert="0.7.2"
+pydot="1.4.1"
+user-agents="2.0"
+Click="7.0"
+
+[scripts]
+cw2 = "cw2"
+
+[build-system]
+requires = ["setuptools>=40.8.0", "wheel"]
+build-backend = "setuptools.build_meta:__legacy__"
