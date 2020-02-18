@@ -1,4 +1,4 @@
-# F20SC-CW2
+# Data Analysis of a Document Tracker (F20SC-CW2)
 This project was completed as part of a fourth year module called Industrial programming at Heriot Watt university. The task was to create a Data Analysis of a Document Tracker. The project focussed on developing a maintainable and efficient piece of software that used Advanced Language Features where appropriate.
 
 A full report on this project can be found [here](https://drive.google.com/file/d/1HUdkQz10pl4xycY_7ZnIahbiyOXBaa3a/view?usp=sharing)
