@@ -1,4 +1,6 @@
 # F20SC-CW2
+This project was completed as part of a fourth year module at Heriot Watt university. The task was to create a Data Analysis of a Document Tracker. A full report on this project can be found [here](https://drive.google.com/file/d/1HUdkQz10pl4xycY_7ZnIahbiyOXBaa3a/view?usp=sharing)
+
 
 ## Set up
 To run the application, do the following:
